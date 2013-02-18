@@ -117,6 +117,13 @@ void HuffmanCoding(string input)
 	int charsCount = uniqueChars.size();
 	int *charFreq = getCharFrequency(input, uniqueChars);
 	
+	// caso particolare: l'intera stringa e' formata da uno stesso carattere ripetuto
+	if (charsCount == 1)
+	{
+		cout << endl << endl << "Nothing to encode... using just 1 bit :)" << endl;
+		return;
+	}
+	
 	HNode *nodes = new HNode[charsCount*2 - 1]; // conterra' tutti i nodi dell'albero
 	
 	int index = 0;
@@ -183,15 +190,17 @@ void HuffmanCoding(string input)
 
 int main(int argc, const char* argv[])
 {
+	string str = argv[1];
+	
 	// controllo correttezza parametri
-	if (argc != 2)
+	if (argc != 2 || str == "")
 	{
-		cout << "Usage: " << argv[0] << " \"string to encode\"" << endl;
+		cout << endl << "Usage: " << argv[0] << " \"string to encode\"" << endl << endl;
 		return 0;
 	}
 	
 	// codifica e stampa
-	HuffmanCoding(argv[1]);
+	HuffmanCoding(str);
 	
 	// credits
 	cout << endl << endl << "Coded by Francesco Borzi'" << endl << endl;
