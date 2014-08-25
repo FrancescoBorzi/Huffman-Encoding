@@ -190,17 +190,15 @@ void HuffmanCoding(string input)
 
 int main(int argc, const char* argv[])
 {
-	string str = argv[1];
-	
 	// controllo correttezza parametri
-	if (argc != 2 || str == "")
+	if (argc != 2)
 	{
 		cout << endl << "Usage: " << argv[0] << " \"string to encode\"" << endl << endl;
 		return 0;
 	}
 	
 	// codifica e stampa
-	HuffmanCoding(str);
+	HuffmanCoding(argv[1]);
 	
 	// credits
 	cout << endl << endl << "Coded by Francesco Borzi'" << endl << endl;
